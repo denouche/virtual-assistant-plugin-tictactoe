@@ -1,0 +1,22 @@
+{
+  "name": "virtual-assistant-plugin-tictactoe",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.3",
+    "virtual-assistant": "^0.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:denouche/virtual-assistant-plugin-tictactoe.git"
+  },
+  "author": "Antoine Leveugle",
+  "license": "ISC",
+  "devDependencies": {
+    "standard-version": "^4.0.0"
+  },
+  "scripts": {
+    "release": "standard-version && git push --follow-tags origin HEAD && npm publish"
+  }
+}
