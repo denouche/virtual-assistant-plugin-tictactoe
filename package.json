@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "javascript-state-machine": "^2.3.5",
     "lodash": "^4.17.3",
-    "virtual-assistant": "^0.1.1"
+    "virtual-assistant": "^0.2.0"
+  },
+  "devDependencies": {
+    "standard-version": "^4.0.0"
   },
   "repository": {
     "type": "git",
@@ -13,9 +17,6 @@
   },
   "author": "Antoine Leveugle",
   "license": "ISC",
-  "devDependencies": {
-    "standard-version": "^4.0.0"
-  },
   "scripts": {
     "release": "standard-version && git push --follow-tags origin HEAD && npm publish"
   }
