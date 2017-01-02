@@ -7,7 +7,7 @@ class TicTacToe extends AssistantFeature {
 
     static getTriggerKeywords() {
         return [
-            'tictactoe', 'tic tac toe', 'tic-tac-toe', 'morpion'
+            'morpion', 'tic tac toe', 'tictactoe', 'tic-tac-toe'
         ];
     }
 
