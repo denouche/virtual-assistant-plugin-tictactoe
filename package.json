@@ -1,7 +1,7 @@
 {
   "name": "virtual-assistant-plugin-tictactoe",
   "version": "0.2.2",
-  "description": "",
+  "description": "This plugin allow your chatbot to play tic tac toe game",
   "main": "index.js",
   "dependencies": {
     "javascript-state-machine": "^2.3.5",
