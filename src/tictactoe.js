@@ -5,10 +5,6 @@ const AssistantFeature = require('virtual-assistant').AssistantFeature,
 
 class TicTacToe extends AssistantFeature {
 
-    static getId(interfaceType, channelOrImId) {
-        return 'TicTacToe-' + interfaceType + '-' + channelOrImId;
-    }
-
     static getTriggerKeywords() {
         return [
             'tictactoe', 'tic tac toe', 'tic-tac-toe', 'morpion'
@@ -18,7 +14,6 @@ class TicTacToe extends AssistantFeature {
     static getTTL() {
         return 5 /* min */ * 60;
     }
-
 
 
     constructor(interfac, context, id) {
@@ -58,11 +53,16 @@ class TicTacToe extends AssistantFeature {
 
     handle(message, context) {
         super.handle(message, context);
-        if(message.match(/^(?:fin|end|exit|stop|quit|quitter|bye)$/i) && this.canTriggerEvent('end')) {
-            this.end(context.userId);
+        if(this.current === 'none') {
+            this.startup();
         }
-        else if(this.canTriggerEvent('text')) {
-            this.text(message, context.userId);
+        else {
+            if(message.match(/^(?:fin|end|exit|stop|quit|quitter|bye)$/i) && this.canTriggerEvent('end')) {
+                this.end(context.userId);
+            }
+            else if(this.canTriggerEvent('text')) {
+                this.text(message, context.userId);
+            }
         }
     }
 
