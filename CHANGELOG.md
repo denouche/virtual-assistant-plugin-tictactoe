@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/denouche/virtual-assistant-plugin-tictactoe/compare/v0.2.3...v0.3.0) (2017-01-02)
+
+
+### Features
+
+* add feature description ([884cec1](https://github.com/denouche/virtual-assistant-plugin-tictactoe/commit/884cec1))
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/denouche/virtual-assistant-plugin-tictactoe/compare/v0.2.2...v0.2.3) (2017-01-02)
 
