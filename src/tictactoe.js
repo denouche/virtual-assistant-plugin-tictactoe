@@ -11,6 +11,10 @@ class TicTacToe extends AssistantFeature {
         ];
     }
 
+    static getDescription() {
+        return 'Jouer au morpion';
+    }
+
     static getTTL() {
         return 5 /* min */ * 60;
     }
