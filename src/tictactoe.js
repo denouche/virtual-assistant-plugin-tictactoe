@@ -57,7 +57,7 @@ class TicTacToe extends AssistantFeature {
             this.startup();
         }
         else {
-            if(message.match(/^(?:fin|end|exit|stop|quit|quitter|bye)$/i) && this.canTriggerEvent('end')) {
+            if(message.match(/(?:fin|end|exit|stop|quit|quitter|bye)/i) && this.canTriggerEvent('end')) {
                 this.end(context.userId);
             }
             else if(this.canTriggerEvent('text')) {
