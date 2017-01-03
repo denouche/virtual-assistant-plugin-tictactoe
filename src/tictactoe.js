@@ -516,7 +516,7 @@ class TicTacToe extends AssistantFeature {
 
     onEnd(event, from, to) {
         this.send('Partie terminée !');
-        this.endAndClearCache();
+        this.clearCache();
     }
 
 
