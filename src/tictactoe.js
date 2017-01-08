@@ -20,8 +20,8 @@ class TicTacToe extends AssistantFeature {
     }
 
 
-    constructor(interfac, context, id) {
-        super(interfac, context, id);
+    constructor(interfac, context) {
+        super(interfac, context);
         StateMachine.create({
             target: TicTacToe.prototype,
             initial: { state: 'InitGame', event: 'startup', defer: true }, // defer is important since the startup event is launched after the fsm is stored in cache
