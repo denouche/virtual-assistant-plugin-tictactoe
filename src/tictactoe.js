@@ -56,7 +56,6 @@ class TicTacToe extends AssistantFeature {
     }
 
     handle(message, context) {
-        super.handle(message, context);
         if(this.current === 'none') {
             this.startup();
         }
