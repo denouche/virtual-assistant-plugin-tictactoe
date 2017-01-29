@@ -1,6 +1,7 @@
 const AssistantFeature = require('virtual-assistant').AssistantFeature,
     StateMachine = require('javascript-state-machine'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    debug = require('debug')('virtual-assistant-plugin-sed-challenge:feature:sed');
 
 
 class TicTacToe extends AssistantFeature {
@@ -102,7 +103,7 @@ class TicTacToe extends AssistantFeature {
             case -1:
                 return 'aiTurn';
             default:
-                console.error('Error: player ', this.context.model.currentPlayer, 'does not exists. Values -1 or 1 are expected.');
+                debug('Error: player ', this.context.model.currentPlayer, 'does not exists. Values -1 or 1 are expected.');
                 break;
         }
     }
@@ -242,11 +243,11 @@ class TicTacToe extends AssistantFeature {
                 col: 0
             },
             game = this.context.model.game;
-        console.log(game);
+        debug(game);
         // https://en.wikipedia.org/wiki/Tic-tac-toe#Strategy
 
         // 1 > win
-        console.log(1)
+        debug(1)
         var diag1Count = 0,
             diag2Count = 0;
         for(var i = 0; i < this.getRowCount(); i++) {
@@ -266,7 +267,7 @@ class TicTacToe extends AssistantFeature {
                         move.col = j;
                     }
                 });
-                console.log(1, 1)
+                debug(1, 1)
                 return move;
             }
             if(colCount === -(this.getRowCount() - 1)) {
@@ -277,12 +278,12 @@ class TicTacToe extends AssistantFeature {
                     }
                 });
                 move.col = i;
-                console.log(1, 2)
+                debug(1, 2)
                 return move;
             }
         }
         if(diag1Count === -(this.getRowCount() - 1)) {
-            console.log(1, 3)
+            debug(1, 3)
             for(var i = 0; i < this.getRowCount(); i++) {
                 if(game[i][i] === 0) {
                     move.row = i;
@@ -292,7 +293,7 @@ class TicTacToe extends AssistantFeature {
             }
         }
         if(diag2Count === -(this.getRowCount() - 1)) {
-            console.log(1, 4)
+            debug(1, 4)
             for(var i = 0; i < this.getRowCount(); i++) {
                 if(game[i][this.getRowCount() - 1 - i] === 0) {
                     move.row = i;
@@ -303,7 +304,7 @@ class TicTacToe extends AssistantFeature {
         }
 
         // 2 > block
-        console.log('2')
+        debug('2')
         var diag1Count = 0,
             diag2Count = 0;
         for(var i = 0; i < this.getRowCount(); i++) {
@@ -323,7 +324,7 @@ class TicTacToe extends AssistantFeature {
                         move.col = j;
                     }
                 });
-                console.log(2, 1)
+                debug(2, 1)
                 return move;
             }
             if(colCount === (this.getRowCount() - 1)) {
@@ -334,12 +335,12 @@ class TicTacToe extends AssistantFeature {
                     }
                 });
                 move.col = i;
-                console.log(2, 2)
+                debug(2, 2)
                 return move;
             }
         }
         if(diag1Count === (this.getRowCount() - 1)) {
-            console.log(2, 3)
+            debug(2, 3)
             for(var i = 0; i < this.getRowCount(); i++) {
                 if(game[i][i] === 0) {
                     move.row = i;
@@ -349,7 +350,7 @@ class TicTacToe extends AssistantFeature {
             }
         }
         if(diag2Count === (this.getRowCount() - 1)) {
-            console.log(2, 4)
+            debug(2, 4)
             for(var i = 0; i < this.getRowCount(); i++) {
                 if(game[i][this.getRowCount() - 1 - i] === 0) {
                     move.row = i;
@@ -364,63 +365,63 @@ class TicTacToe extends AssistantFeature {
         // 4 > block opponent's fork
 
         // 5 > center
-        console.log('5')
+        debug('5')
         if(this.isLocationEmpty(_.floor(this.getRowCount() / 2), _.floor(this.getRowCount() / 2))) {
-            console.log('5 ok')
+            debug('5 ok')
             move.row = _.floor(this.getRowCount() / 2);
             move.col = _.floor(this.getRowCount() / 2);
             return move;
         }
 
         // 6 > opposite corner
-        console.log('6')
+        debug('6')
         if(game[0][0] === 1 && this.isLocationEmpty(this.getRowCount() - 1, this.getRowCount() - 1)) {
-            console.log('6', 1)
+            debug('6', 1)
             move.row = this.getRowCount() - 1;
             move.col = this.getRowCount() - 1;
             return move;
         }
         if(game[this.getRowCount() - 1][this.getRowCount() - 1] === 1 && this.isLocationEmpty(0, 0)) {
-            console.log('6', 2)
+            debug('6', 2)
             move.row = 0;
             move.col = 0;
             return move;
         }
         if(game[0][this.getRowCount() - 1] === 1 && this.isLocationEmpty(this.getRowCount() - 1, 0)) {
-            console.log('6', 3)
+            debug('6', 3)
             move.row = this.getRowCount() - 1;
             move.col = 0;
             return move;
         }
         if(game[this.getRowCount() - 1][0] === 1 && this.isLocationEmpty(0, this.getRowCount() - 1)) {
-            console.log('6', 4)
+            debug('6', 4)
             move.row = 0;
             move.col = this.getRowCount() - 1;
             return move;
         }
 
         // 7 > empty corner
-        console.log('7')
+        debug('7')
         if(this.isLocationEmpty(this.getRowCount() - 1, this.getRowCount() - 1)) {
-            console.log('7', 1)
+            debug('7', 1)
             move.row = this.getRowCount() - 1;
             move.col = this.getRowCount() - 1;
             return move;
         }
         if(this.isLocationEmpty(0, 0)) {
-            console.log('7', 2)
+            debug('7', 2)
             move.row = 0;
             move.col = 0;
             return move;
         }
         if(this.isLocationEmpty(this.getRowCount() - 1, 0)) {
-            console.log('7', 3)
+            debug('7', 3)
             move.row = this.getRowCount() - 1;
             move.col = 0;
             return move;
         }
         if(this.isLocationEmpty(0, this.getRowCount() - 1)) {
-            console.log('7', 4)
+            debug('7', 4)
             move.row = 0;
             move.col = this.getRowCount() - 1;
             return move;
@@ -508,7 +509,7 @@ class TicTacToe extends AssistantFeature {
     onAiTurn(event, from, to) {
         this.send('A mon tour !');
         var move = this.getAIMove();
-        console.log('AI move ', move);
+        debug('AI move ', move);
         this.context.model.game[move.row][move.col] = -1;
         this.internal();
     }

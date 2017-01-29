@@ -4,6 +4,7 @@
   "description": "This plugin allow your chatbot to play tic tac toe game",
   "main": "index.js",
   "dependencies": {
+    "debug": "^2.6.0",
     "javascript-state-machine": "^2.3.5",
     "lodash": "^4.17.3",
     "virtual-assistant": ">=0.10.0"
